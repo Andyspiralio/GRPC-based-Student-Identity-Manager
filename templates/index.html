@@ -1,0 +1,201 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gRPC Client</title>
+    <style>
+        /* Basic styling for the form */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('download.jpg');
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<form id="recordForm">
+    <h2>Create Record</h2>
+    <label for="name">Book Name</label>
+    <input type="text" id="name" name="name" required>
+    <label for="age">Year of Publishing</label>
+    <input type="number" id="age" name="age" required>
+    <label for="roll">ID or ISBN Number</label>
+    <input type="text" id="roll" name="roll" required>
+    <label for="city">Author</label>
+    <input type="text" id="city" name="city" required>
+    <input type="submit" value="Submit">
+</form>
+
+<div id="response">
+    
+</div>
+
+<script>
+    document.getElementById("recordForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Get form data
+        const formData = {
+            name: document.getElementById("name").value,
+            age: document.getElementById("age").value,
+            roll: document.getElementById("roll").value,
+            city: document.getElementById("city").value
+        };
+        console.log(formData)
+        // Make a POST request to your Flask server
+        fetch("/create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        
+    });
+</script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gRPC Client</title>
+    <style>
+        /* Basic styling for the form */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/update">Update</a>
+    <a href="/delete">Delete</a>
+    <a href="/read">Read</a>
+</nav>
+
+<form id="recordForm">
+    <h2>Create Record</h2>
+    <label for="name">Book Name</label>
+    <input type="text" id="name" name="name" required>
+    <label for="age">Year of Publishing</label>
+    <input type="number" id="age" name="age" required>
+    <label for="roll">ID or ISBN Number</label>
+    <input type="text" id="roll" name="roll" required>
+    <label for="city">Author</label>
+    <input type="text" id="city" name="city" required>
+    <input type="submit" value="Submit">
+</form>
+
+<div id="response">
+    
+</div>
+
+<script>
+    document.getElementById("recordForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Get form data
+        const formData = {
+            name: document.getElementById("name").value,
+            age: document.getElementById("age").value,
+            roll: document.getElementById("roll").value,
+            city: document.getElementById("city").value
+        };
+
+        // Make a POST request to your server
+        fetch("/create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle response from server if needed
+        })
+        .catch(error => {
+            // Handle error
+            console.error("Error:", error);
+        });
+    });
+</script>
+</body>
+</html>
+

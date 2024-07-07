@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+service DatabaseService {
+    rpc CreateRecord(CreateRecordRequest) returns (CreateRecordResponse);
+    rpc ReadRecord(ReadRecordRequest) returns (ReadRecordResponse);
+    rpc UpdateRecord(UpdateRecordRequest) returns (UpdateRecordResponse);
+    rpc DeleteRecord(DeleteRecordRequest) returns (DeleteRecordResponse);
+}
+
+message CreateRecordRequest {
+    string name = 1;
+    int32 age = 2;
+    string city = 3;
+    string roll = 4;
+}
+
+message CreateRecordResponse {
+    string id = 1;
+}
+
+message ReadRecordRequest {
+    string id = 1;
+}
+
+message ReadRecordResponse {
+    string name = 1;
+    int32 age = 2;
+    string city = 3;
+}
+
+message UpdateRecordRequest {
+    string id = 1;
+    string name = 2;
+    int32 age = 3;
+    string city = 4;
+    
+}
+
+message UpdateRecordResponse {
+    string message = 1;
+}
+
+message DeleteRecordRequest {
+    string id = 1;
+}
+
+message DeleteRecordResponse {
+    string message = 1;
+}
